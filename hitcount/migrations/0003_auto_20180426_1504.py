@@ -13,9 +13,22 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.AlterField(
-            model_name='hitcount',
-            name='object_pk',
-            field=models.UUIDField(default=uuid.uuid4, editable=False, verbose_name='ID'),
+        migrations.RemoveField(
+            model_name='Hit',
+            name='user',
+        ),
+        migrations.RemoveField(
+            model_name='Hit',
+            name='hitcount',
+        ),
+        migrations.DeleteModel(
+            name='Hit',
+        ),
+        migrations.RemoveField(
+            model_name='HitCount',
+            name='content_type',
+        ),
+        migrations.DeleteModel(
+            name='HitCount',
         ),
     ]
