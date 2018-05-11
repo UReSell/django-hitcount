@@ -16,6 +16,12 @@ class HitCountManager(models.Manager):
             content_type=ctype, object_pk=obj.pk)
         return hit_count
 
+    def get_or_none(self, **kwargs):
+        try:
+            return self.get(**kwargs)
+        except self.model.DoesNotExist:
+            return None
+
 
 class HitManager(models.Manager):
 
