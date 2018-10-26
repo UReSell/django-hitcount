@@ -88,7 +88,7 @@ class HitCountResource(resources.ModelResource):
         fields = ('hits', 'content_object')
 
         
-class HitCountAdmin(admin.ModelAdmin):
+class HitCountAdmin(ImportExportMixin, admin.ModelAdmin):
     resource_class = HitCountResource
     list_display = ('content_object', 'hits', 'modified')
     fields = ('hits',)
