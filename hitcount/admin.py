@@ -85,7 +85,7 @@ class HitCountResource(resources.ModelResource):
 
     class Meta:
         model = HitCount
-        fields = ('hits', 'content_object')
+        fields = ('hits', 'object_pk')
 
         
 class HitCountAdmin(ImportExportMixin, admin.ModelAdmin):
