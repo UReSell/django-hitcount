@@ -3,6 +3,8 @@ from __future__ import unicode_literals
 from django.contrib import admin
 from django.core.exceptions import PermissionDenied
 from django.utils.translation import ugettext_lazy as _
+from import_export.admin import ImportExportMixin
+from import_export import resources
 
 from .models import Hit, HitCount, BlacklistIP, BlacklistUserAgent
 
@@ -79,8 +81,15 @@ class HitAdmin(admin.ModelAdmin):
 
 admin.site.register(Hit, HitAdmin)
 
+class HitCountResource(resources.ModelResource):
 
+    class Meta:
+        model = HitCount
+        fields = ('hits', 'content_object')
+
+        
 class HitCountAdmin(admin.ModelAdmin):
+    resource_class = HitCountResource
     list_display = ('content_object', 'hits', 'modified')
     fields = ('hits',)
 
