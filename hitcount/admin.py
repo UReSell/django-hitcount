@@ -91,6 +91,7 @@ class HitCountResource(resources.ModelResource):
 class HitCountAdmin(ImportExportMixin, admin.ModelAdmin):
     resource_class = HitCountResource
     list_display = ('content_object', 'hits', 'modified')
+    search_fields = ('object_pk', )
     fields = ('hits',)
 
     def has_add_permission(self, request):
